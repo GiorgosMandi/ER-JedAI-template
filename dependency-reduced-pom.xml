@@ -25,7 +25,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>Exp1</mainClass>
+                  <mainClass>Submission</mainClass>
                 </transformer>
               </transformers>
             </configuration>
