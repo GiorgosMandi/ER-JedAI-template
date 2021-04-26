@@ -3,7 +3,6 @@ import org.scify.jedai.blockbuilding.IBlockBuilding;
 import org.scify.jedai.blockbuilding.QGramsBlocking;
 import org.scify.jedai.blockprocessing.IBlockProcessing;
 import org.scify.jedai.blockprocessing.blockcleaning.BlockFiltering;
-import org.scify.jedai.blockprocessing.comparisoncleaning.CardinalityNodePruning;
 import org.scify.jedai.blockprocessing.comparisoncleaning.WeightedNodePruning;
 import org.scify.jedai.datamodel.AbstractBlock;
 import org.scify.jedai.datamodel.EntityProfile;
@@ -56,12 +55,12 @@ public class Workflow {
         comparisonCleaning = new WeightedNodePruning(WeightingScheme.JS);
 
         // Entity matching - build representation model
-        rm = RepresentationModel.CHARACTER_BIGRAMS;
-        sm = SimilarityMetric.COSINE_SIMILARITY;
+        rm = RepresentationModel.CHARACTER_FOURGRAMS_TF_IDF;
+        sm = SimilarityMetric.SIGMA_SIMILARITY;
         entityMatching = new ProfileMatcher(profiles, rm, sm);
 
         // Entity Clustering
-        entityClustering = new CenterClustering(0.5f);
+        entityClustering = new ConnectedComponentsClustering(0.8f);
     }
 
 
